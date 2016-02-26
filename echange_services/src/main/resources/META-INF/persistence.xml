@@ -3,6 +3,11 @@
   <persistence-unit name="PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>echangeservices.entity.Effacemoi</class>
+    <class>echangeservices.entity.Utilisateur</class>
+    <class>echangeservices.entity.Annonces</class>
+    <class>echangeservices.entity.Categorie</class>
+    <class>echangeservices.entity.Lieu</class>
+    <class>echangeservices.entity.Commentaire</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/echange_services"/>
       <property name="javax.persistence.jdbc.user" value="echange_services"/>
