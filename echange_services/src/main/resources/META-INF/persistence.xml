@@ -2,7 +2,6 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="PU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>echangeservices.entity.Annonces</class>
     <class>echangeservices.entity.Categorie</class>
     <class>echangeservices.entity.Commentaire</class>
     <class>echangeservices.entity.Effacemoi</class>
@@ -10,6 +9,7 @@
     <class>echangeservices.entity.Message</class>
     <class>echangeservices.entity.Paiement</class>
     <class>echangeservices.entity.Utilisateur</class>
+    <class>echangeservices.entity.Annonce</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:derby://localhost:1527/echange_services"/>
       <property name="javax.persistence.jdbc.user" value="echange_services"/>

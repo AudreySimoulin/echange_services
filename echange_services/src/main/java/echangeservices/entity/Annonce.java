@@ -8,32 +8,71 @@ package echangeservices.entity;
 import echangeservices.enumeration.TypeAnnonce;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
  * @author admin
  */
 @Entity
-public class Annonces implements Serializable {
+public class Annonce implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private TypeAnnonce typeAnnonce;
-    
+
     private String titre;
-    
+
     private String contenu;
-    
+
     private Integer prix;
-    
+
     private Timestamp dateCreation;
+
+    @ManyToOne
+    @JoinColumn(name = "Categorie_ID")
+    private Categorie categorie;
+
+    @ManyToOne
+    @JoinColumn(name = "Util_ID")
+    private Utilisateur postePar;
+
+    @OneToMany(mappedBy = "annonce")
+    private List<Commentaire> commentaires;
+
+    public List<Commentaire> getCommentaires() {
+        return commentaires;
+    }
+
+    public void setCommentaires(List<Commentaire> commentaires) {
+        this.commentaires = commentaires;
+    }
+
+    public Utilisateur getPostePar() {
+        return postePar;
+    }
+
+    public void setPostePar(Utilisateur postePar) {
+        this.postePar = postePar;
+    }
+
+    public Categorie getCategorie() {
+        return categorie;
+    }
+
+    public void setCategorie(Categorie categorie) {
+        this.categorie = categorie;
+    }
 
     public TypeAnnonce getTypeAnnonce() {
         return typeAnnonce;
@@ -74,7 +113,6 @@ public class Annonces implements Serializable {
     public void setDateCreation(Timestamp dateCreation) {
         this.dateCreation = dateCreation;
     }
-    
 
     public Long getId() {
         return id;
@@ -94,10 +132,10 @@ public class Annonces implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Annonces)) {
+        if (!(object instanceof Annonce)) {
             return false;
         }
-        Annonces other = (Annonces) object;
+        Annonce other = (Annonce) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -108,5 +146,5 @@ public class Annonces implements Serializable {
     public String toString() {
         return "echangeservices.entity.Annonces[ id=" + id + " ]";
     }
-    
+
 }

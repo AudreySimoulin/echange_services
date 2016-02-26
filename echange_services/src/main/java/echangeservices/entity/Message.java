@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -23,14 +25,38 @@ public class Message implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String titre;
-    
+
     private String contenu;
-    
+
     private Timestamp dateCreation;
-    
+
     private Boolean lu;
+
+    @ManyToOne
+    @JoinColumn(name = "Dest_ID")
+    private Utilisateur destinataire;
+
+    @ManyToOne
+    @JoinColumn(name = "Emet_ID")
+    private Utilisateur emetteur;
+
+    public Utilisateur getDestinataire() {
+        return destinataire;
+    }
+
+    public void setDestinataire(Utilisateur destinataire) {
+        this.destinataire = destinataire;
+    }
+
+    public Utilisateur getEmetteur() {
+        return emetteur;
+    }
+
+    public void setEmetteur(Utilisateur emetteur) {
+        this.emetteur = emetteur;
+    }
 
     public String getTitre() {
         return titre;
@@ -96,5 +122,5 @@ public class Message implements Serializable {
     public String toString() {
         return "echangeservices.entity.Message[ id=" + id + " ]";
     }
-    
+
 }

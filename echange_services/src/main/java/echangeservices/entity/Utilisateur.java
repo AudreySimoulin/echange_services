@@ -7,11 +7,15 @@ package echangeservices.entity;
 
 import echangeservices.enumeration.TypeUtil;
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -24,15 +28,71 @@ public class Utilisateur implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     @Column(unique = true)
     private String email;
-    
+
     private String mdp;
-    
+
     private TypeUtil typeUtil;
-    
+
     private Integer solde;
+
+    @OneToMany(mappedBy = "postePar")
+    private List<Annonce> annonces;
+
+    @OneToMany(mappedBy = "postePar")
+    private List<Commentaire> commentaires;
+
+    @ManyToOne
+    @JoinColumn(name = "Lieu_ID")
+    private Lieu lieu;
+
+    @OneToMany(mappedBy = "destinataire")
+    private List<Message> recus;
+
+    @OneToMany(mappedBy = "emetteur")
+    private List<Message> envoyes;
+
+    public List<Message> getRecus() {
+        return recus;
+    }
+
+    public void setRecus(List<Message> recus) {
+        this.recus = recus;
+    }
+
+    public List<Message> getEnvoyes() {
+        return envoyes;
+    }
+
+    public void setEnvoyes(List<Message> envoyes) {
+        this.envoyes = envoyes;
+    }
+
+    public Lieu getLieu() {
+        return lieu;
+    }
+
+    public void setLieu(Lieu lieu) {
+        this.lieu = lieu;
+    }
+
+    public List<Commentaire> getCommentaires() {
+        return commentaires;
+    }
+
+    public void setCommentaires(List<Commentaire> commentaires) {
+        this.commentaires = commentaires;
+    }
+
+    public List<Annonce> getAnnonces() {
+        return annonces;
+    }
+
+    public void setAnnonces(List<Annonce> annonces) {
+        this.annonces = annonces;
+    }
 
     public String getEmail() {
         return email;
@@ -98,5 +158,5 @@ public class Utilisateur implements Serializable {
     public String toString() {
         return "echangeservices.entity.Utilisateur[ id=" + id + " ]";
     }
-    
+
 }

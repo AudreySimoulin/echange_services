@@ -6,10 +6,12 @@
 package echangeservices.entity;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 /**
  *
@@ -22,8 +24,19 @@ public class Lieu implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+
     private String nom;
+
+    @OneToMany(mappedBy = "lieu")
+    private List<Utilisateur> utilisateurs;
+
+    public List<Utilisateur> getUtilisateurs() {
+        return utilisateurs;
+    }
+
+    public void setUtilisateurs(List<Utilisateur> utilisateurs) {
+        this.utilisateurs = utilisateurs;
+    }
 
     public String getNom() {
         return nom;
@@ -32,7 +45,6 @@ public class Lieu implements Serializable {
     public void setNom(String nom) {
         this.nom = nom;
     }
-    
 
     public Long getId() {
         return id;
@@ -66,5 +78,5 @@ public class Lieu implements Serializable {
     public String toString() {
         return "echangeservices.entity.Lieu[ id=" + id + " ]";
     }
-    
+
 }
