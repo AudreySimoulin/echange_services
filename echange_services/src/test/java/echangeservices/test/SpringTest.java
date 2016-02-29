@@ -200,10 +200,10 @@ public class SpringTest {
             System.out.println(a.getTitre());
     }
     
-//    @Test
-    public void findByTitreOK(){
-       // for(Annonce a : annonceService.findByTitre("Recherche electricien"))
-       //     System.out.println("******"+a.getTitre()+"**********");
+  //@Test
+    public void findByTitreKO(){
+        for(Annonce a : annonceService.findByTitreContainingIgnoreCaseOrderByDateCreationDesc("mécanicien"))
+            System.out.println("******"+a.getTitre()+"**********");
     }
     
     //@Test
@@ -248,7 +248,7 @@ public class SpringTest {
             System.out.println("******"+a.getTitre()+"**********"); 
     }
     
-    @Test
+    //@Test
     public void findByTitreOrContenuOK(){
         for(Annonce a : annonceService.findByTitreOrContenuContainingOrderByDateCreationDesc("blabla","blabla"))
             System.out.println("******"+a.getTitre()+"**********");     
