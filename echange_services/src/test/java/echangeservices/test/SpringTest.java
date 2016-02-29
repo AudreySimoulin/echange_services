@@ -33,9 +33,7 @@ public class SpringTest {
     
     @Test
     public void doNadaOK(){
-        Categorie c = new Categorie();
-        categorieServ.save(c);
-        
+
     }
     
 }
