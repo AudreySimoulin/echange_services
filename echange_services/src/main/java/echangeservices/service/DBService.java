@@ -40,9 +40,9 @@ public class DBService {
         messageService.deleteAll();
         commentaireService.deleteAll();
         paiementService.deleteAll();
+        annonceService.deleteAll();
         utilisateurService.deleteAll();
         lieuService.deleteAll();
-        annonceService.deleteAll();
         categorieService.deleteAll();
 
     }

@@ -33,11 +33,10 @@ public class TransfertService {
     public void transfert(long idEmet, long idDest, int montant, String msg) {
 
         Utilisateur emetteur = em.find(Utilisateur.class, idEmet);
-        Utilisateur destinataire = em.find(Utilisateur.class, idEmet);
+        Utilisateur destinataire = em.find(Utilisateur.class, idDest);
         emetteur.setSolde(emetteur.getSolde() - montant);
-        destinataire.setSolde(destinataire.getSolde() + montant);
-
         userv.save(emetteur);
+        destinataire.setSolde(destinataire.getSolde() + montant);
         userv.save(destinataire);
 
         Paiement p = new Paiement(montant, Timestamp.from(Instant.now()), destinataire, emetteur, msg);

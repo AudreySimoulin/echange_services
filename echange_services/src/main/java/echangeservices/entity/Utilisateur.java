@@ -161,17 +161,14 @@ public class Utilisateur implements Serializable {
 
     public Utilisateur() {
     }
-    
-    
 
-    public Utilisateur(Long id, String email, String mdp, TypeUtil typeUtil, Integer solde, List<Annonce> annonces, List<Commentaire> commentaires, Lieu lieu, List<Message> recus, List<Message> envoyes, List<Paiement> paiementsRecus, List<Paiement> paiementsEmis) {
+    public Utilisateur(Long id, String email, String mdp, TypeUtil typeUtil, Integer solde, Lieu lieu) {
         this.id = id;
         this.email = email;
         this.mdp = mdp;
         this.typeUtil = typeUtil;
-        this.solde = solde;       
+        this.solde = solde;
         this.lieu = lieu;
-        
     }
 
     @Override
