@@ -12,40 +12,39 @@ import org.springframework.stereotype.Service;
  *
  * @author admin
  */
-
 @Service
 public class DBService {
-    
+
     @Autowired
     private UtilisateurService utilisateurService;
-    
+
     @Autowired
     private PaiementService paiementService;
-    
+
     @Autowired
     private MessageService messageService;
-    
+
     @Autowired
     private LieuService lieuService;
-    
-     @Autowired
-    private CommentaireService commentaireService;
-    
+
     @Autowired
-    private CategorieService categorieService;   
-        
+    private CommentaireService commentaireService;
+
+    @Autowired
+    private CategorieService categorieService;
+
     @Autowired
     private AnnonceService annonceService;
-    
-    public void deleteAll(){
-        utilisateurService.deleteAll();
-        paiementService.deleteAll();
+
+    public void deleteAll() {
         messageService.deleteAll();
-        lieuService.deleteAll();
         commentaireService.deleteAll();
-        categorieService.deleteAll();
+        paiementService.deleteAll();
+        utilisateurService.deleteAll();
+        lieuService.deleteAll();
         annonceService.deleteAll();
+        categorieService.deleteAll();
+
     }
-   
-    
+
 }
