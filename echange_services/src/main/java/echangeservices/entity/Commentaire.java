@@ -86,6 +86,15 @@ public class Commentaire implements Serializable {
         this.id = id;
     }
 
+    public Commentaire(Long id, String contenu, Integer note, Timestamp dateCreation, Annonce annonce, Utilisateur postePar) {
+        this.id = id;
+        this.contenu = contenu;
+        this.note = note;
+        this.dateCreation = dateCreation;
+        this.annonce = annonce;
+        this.postePar = postePar;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

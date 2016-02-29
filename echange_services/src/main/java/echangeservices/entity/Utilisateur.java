@@ -156,6 +156,21 @@ public class Utilisateur implements Serializable {
         this.id = id;
     }
 
+    public Utilisateur(Long id, String email, String mdp, TypeUtil typeUtil, Integer solde, List<Annonce> annonces, List<Commentaire> commentaires, Lieu lieu, List<Message> recus, List<Message> envoyes, List<Paiement> paiementsRecus, List<Paiement> paiementsEmis) {
+        this.id = id;
+        this.email = email;
+        this.mdp = mdp;
+        this.typeUtil = typeUtil;
+        this.solde = solde;
+        this.annonces = annonces;
+        this.commentaires = commentaires;
+        this.lieu = lieu;
+        this.recus = recus;
+        this.envoyes = envoyes;
+        this.paiementsRecus = paiementsRecus;
+        this.paiementsEmis = paiementsEmis;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

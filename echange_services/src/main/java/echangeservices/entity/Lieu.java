@@ -54,6 +54,12 @@ public class Lieu implements Serializable {
         this.id = id;
     }
 
+    public Lieu(Long id, String nom, List<Utilisateur> utilisateurs) {
+        this.id = id;
+        this.nom = nom;
+        this.utilisateurs = utilisateurs;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

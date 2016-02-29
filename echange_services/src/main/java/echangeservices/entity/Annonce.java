@@ -122,6 +122,18 @@ public class Annonce implements Serializable {
         this.id = id;
     }
 
+    public Annonce(Long id, TypeAnnonce typeAnnonce, String titre, String contenu, Integer prix, Timestamp dateCreation, Categorie categorie, Utilisateur postePar, List<Commentaire> commentaires) {
+        this.id = id;
+        this.typeAnnonce = typeAnnonce;
+        this.titre = titre;
+        this.contenu = contenu;
+        this.prix = prix;
+        this.dateCreation = dateCreation;
+        this.categorie = categorie;
+        this.postePar = postePar;
+        this.commentaires = commentaires;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;
