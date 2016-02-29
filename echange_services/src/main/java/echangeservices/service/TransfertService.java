@@ -7,6 +7,7 @@ package echangeservices.service;
 
 import echangeservices.entity.Paiement;
 import echangeservices.entity.Utilisateur;
+import echangeservices.exception.SoldeInsuffisantException;
 import java.sql.Timestamp;
 import java.time.Instant;
 import javax.persistence.EntityManager;
@@ -29,11 +30,18 @@ public class TransfertService {
 
     @Autowired
     private UtilisateurService userv;
+    
+    @Autowired
+    private ConfigService configService;
 
-    public void transfert(long idEmet, long idDest, int montant, String msg) {
+    public void transfert(long idEmet, long idDest, int montant, String msg) throws SoldeInsuffisantException{
 
         Utilisateur emetteur = em.find(Utilisateur.class, idEmet);
         Utilisateur destinataire = em.find(Utilisateur.class, idDest);
+        
+        if((emetteur.getSolde() - montant) < configService.getPlafond()){
+            throw new SoldeInsuffisantException();
+        }
         emetteur.setSolde(emetteur.getSolde() - montant);
         userv.save(emetteur);
         destinataire.setSolde(destinataire.getSolde() + montant);

@@ -11,6 +11,7 @@ import echangeservices.entity.Lieu;
 import echangeservices.entity.Utilisateur;
 import echangeservices.enumeration.TypeAnnonce;
 import echangeservices.enumeration.TypeUtil;
+import echangeservices.exception.SoldeInsuffisantException;
 import echangeservices.service.AnnonceService;
 import echangeservices.service.CategorieService;
 import echangeservices.service.CommentaireService;
@@ -183,9 +184,9 @@ public class SpringTest {
         envoieMessageService.envoieMessage(1L, 2L, "Hello", "Bonjour Audrey");
     }
     
-    //@Test
-    public void transfertOK(){
-        transfertService.transfert(1L, 3L, 50, "Transfert effectue");
+    @Test
+    public void transfertOK() throws SoldeInsuffisantException{
+        transfertService.transfert(3L, 1L, 100, "Transfert effectue");
     }
 
     //@Test
