@@ -21,6 +21,12 @@ import javax.persistence.OneToMany;
 @Entity
 public class Categorie implements Serializable {
 
+    public Categorie(Long id, String nom, List<Annonce> annonces) {
+        this.id = id;
+        this.nom = nom;
+        this.annonces = annonces;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

@@ -5,11 +5,14 @@
  */
 package echangeservices.test;
 
+import echangeservices.entity.Categorie;
+import echangeservices.service.CategorieService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import echangeservices.spring.SpringConfig;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -25,8 +28,13 @@ public class SpringTest {
     @PersistenceContext
     private EntityManager em;
     
+    @Autowired
+    private CategorieService categorieServ;
+    
     @Test
     public void doNadaOK(){
+        Categorie c = new Categorie();
+        categorieServ.save(c);
         
     }
     
