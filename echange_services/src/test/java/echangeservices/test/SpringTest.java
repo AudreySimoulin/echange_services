@@ -38,6 +38,14 @@ public class SpringTest {
     
     @Test
     public void doNadaOK(){       
+        
+        Utilisateur u1 = new Utilisateur();
+        u1.setId(1L);
+        
+        Utilisateur u2 = new Utilisateur();
+        u1.setId(2L);
+        
+        envoieMessage.envoieMessage(1L, 2L, "Hello", "Bonjour 1L");
      
         
       

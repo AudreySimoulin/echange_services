@@ -22,10 +22,13 @@ public class EnvoieMessageService {
     
     @Autowired
     private UtilisateurService userv;
+    @Autowired
+    private MessageService mserv;
     
     public void envoieMessage(long idDest, long idEmet,String titre, String messsage ){
         
         Message m = new Message(titre, messsage, Timestamp.from(Instant.now()), Boolean.FALSE, userv.findOne(idDest), userv.findOne(idEmet));
+        mserv.save(m);
         userv.findOne(idEmet).getMessagesEnvoyes().add(m);
         userv.findOne(idDest).getMessagesRecus().add(m);
         
