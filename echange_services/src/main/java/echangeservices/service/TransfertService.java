@@ -18,34 +18,34 @@ import org.springframework.stereotype.Service;
  *
  * @author admin
  */
-
 @Service
 public class TransfertService {
-    
+
     @PersistenceContext
     private EntityManager em;
-    
+
     @Autowired
     private PaiementService pserv;
-    
+
     @Autowired
     private UtilisateurService userv;
-    
-    public void transfert(long idEmet, long idDest, int montant, String msg){
-        
+
+    public void transfert(long idEmet, long idDest, int montant, String msg) {
+
         Utilisateur emetteur = em.find(Utilisateur.class, idEmet);
         Utilisateur destinataire = em.find(Utilisateur.class, idEmet);
-        emetteur.setSolde(emetteur.getSolde()-montant);
-        destinataire.setSolde(destinataire.getSolde()+montant);
-        
+        emetteur.setSolde(emetteur.getSolde() - montant);
+        destinataire.setSolde(destinataire.getSolde() + montant);
+
         userv.save(emetteur);
         userv.save(destinataire);
-                
+
         Paiement p = new Paiement(montant, Timestamp.from(Instant.now()), destinataire, emetteur, msg);
-        pserv.save(p);
-        
+
         emetteur.getPaiementsEmis().add(p);
         destinataire.getPaiementsRecus().add(p);
-        
+
+        pserv.save(p);
+
     }
 }
