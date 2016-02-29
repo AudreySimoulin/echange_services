@@ -28,8 +28,7 @@ public class SpringTest {
     @PersistenceContext
     private EntityManager em;
     
-    @Autowired
-    private CategorieService categorieServ;
+
     
     @Test
     public void doNadaOK(){

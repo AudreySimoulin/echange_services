@@ -13,6 +13,6 @@ import org.springframework.data.repository.CrudRepository;
  *
  * @author admin
  */
-public interface PaiementService extends CrudRepository<Paiement, Long>{
-    
+public interface PaiementService extends CrudRepository<Paiement, Long> {
+
 }

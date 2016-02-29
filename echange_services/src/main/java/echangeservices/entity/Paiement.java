@@ -88,8 +88,10 @@ public class Paiement implements Serializable {
         this.id = id;
     }
 
-    public Paiement(Long id, Integer montant, Timestamp dateCreation, Utilisateur destinataire, Utilisateur emetteur, String commentaire) {
-        this.id = id;
+    public Paiement() {
+    }
+
+    public Paiement(Integer montant, Timestamp dateCreation, Utilisateur destinataire, Utilisateur emetteur, String commentaire) {
         this.montant = montant;
         this.dateCreation = dateCreation;
         this.destinataire = destinataire;

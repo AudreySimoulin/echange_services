@@ -54,6 +54,9 @@ public class Lieu implements Serializable {
         this.id = id;
     }
 
+    public Lieu() {
+    }
+
     public Lieu(Long id, String nom, List<Utilisateur> utilisateurs) {
         this.id = id;
         this.nom = nom;

@@ -86,6 +86,9 @@ public class Commentaire implements Serializable {
         this.id = id;
     }
 
+    public Commentaire() {
+    }
+
     public Commentaire(Long id, String contenu, Integer note, Timestamp dateCreation, Annonce annonce, Utilisateur postePar) {
         this.id = id;
         this.contenu = contenu;

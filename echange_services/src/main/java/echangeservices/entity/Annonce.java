@@ -10,6 +10,8 @@ import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.List;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -29,6 +31,7 @@ public class Annonce implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     private TypeAnnonce typeAnnonce;
 
     private String titre;
@@ -120,6 +123,9 @@ public class Annonce implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public Annonce() {
     }
 
     public Annonce(Long id, TypeAnnonce typeAnnonce, String titre, String contenu, Integer prix, Timestamp dateCreation, Categorie categorie, Utilisateur postePar, List<Commentaire> commentaires) {
