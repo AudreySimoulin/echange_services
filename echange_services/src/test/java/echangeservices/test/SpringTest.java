@@ -190,13 +190,13 @@ public class SpringTest {
 
     //@Test
     public void findByCategorieOK(){
-        for(Annonce a : annonceService.findByCategorieId(1L))
+        for(Annonce a : annonceService.findByCategorieIdOrderByDateCreationDesc(3L))
             System.out.println(a.getTitre());
     }
 
     //@Test
     public void findByUtilisateurOK(){
-        for(Annonce a : annonceService.findByPosteParId(1L))
+        for(Annonce a : annonceService.findByPosteParIdOrderByDateCreationDesc(1L))
             System.out.println(a.getTitre());
     }
     
@@ -208,25 +208,56 @@ public class SpringTest {
     
     //@Test
     public void findByLieuOK(){
-        for(Annonce a : annonceService.findByPosteParLieuId(2L))
+        for(Annonce a : annonceService.findByPosteParLieuIdOrderByDateCreationDesc(2L))
             System.out.println("******"+a.getTitre()+"**********"); 
     }
     
    // @Test
     public void findByTypeAnnonceOK(){
-        for(Annonce a : annonceService.findByTypeAnnonce(TypeAnnonce.Demande))
+        for(Annonce a : annonceService.findByTypeAnnonceOrderByDateCreationDesc(TypeAnnonce.Demande))
             System.out.println("******"+a.getTitre()+"**********"); 
     }
     
-    //@Test
+//    @Test
     public void findByTitreContainingOK(){
-        for(Annonce a : annonceService.findByTitreContaining("el%ec"))
+        for(Annonce a : annonceService.findByTitreContainingIgnoreCaseOrderByDateCreationDesc("ELEC"))
             System.out.println("******"+a.getTitre()+"**********"); 
     }
     
     //@Test
-    public void findByTitreLikeOK(){
-        for(Annonce a : annonceService.findByTitreLike("%elec%"))
+    public void findByTypeAnnonceAndPosteParOK(){
+        for(Annonce a : annonceService.findByTypeAnnonceAndPosteParIdOrderByDateCreationDesc(TypeAnnonce.Demande, 2L))
             System.out.println("******"+a.getTitre()+"**********"); 
     }
+    
+    //@Test
+    public void findByTypeAnnonceAndLieuOK(){
+        for(Annonce a : annonceService.findByTypeAnnonceAndPosteParLieuIdOrderByDateCreationDesc(TypeAnnonce.Offre, 2L))
+            System.out.println("******"+a.getTitre()+"**********"); 
+    }
+    
+    //@Test
+    public void findByTypeAnnonceAndCategorieOK(){
+        for(Annonce a : annonceService.findByTypeAnnonceAndCategorieIdOrderByDateCreationDesc(TypeAnnonce.Offre, 6L))
+            System.out.println("******"+a.getTitre()+"**********"); 
+    }
+    
+    //@Test
+    public void findByTypeAnnonceAndPosteParLieuIdAndCategorieIdOK(){
+        for(Annonce a : annonceService.findByTypeAnnonceAndPosteParLieuIdAndCategorieIdOrderByDateCreationDesc(TypeAnnonce.Offre, 2L,6L))
+            System.out.println("******"+a.getTitre()+"**********"); 
+    }
+    
+    @Test
+    public void findByTitreOrContenuOK(){
+        for(Annonce a : annonceService.findByTitreOrContenuContainingOrderByDateCreationDesc("blabla","blabla"))
+            System.out.println("******"+a.getTitre()+"**********");     
+            
+    }
+    
+    
+    
+    
+    
+    
 }

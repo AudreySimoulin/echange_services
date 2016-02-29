@@ -16,18 +16,27 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface AnnonceService extends CrudRepository<Annonce, Long> {
 
-    public List<Annonce> findByCategorieId(Long id);
+    public List<Annonce> findByCategorieIdOrderByDateCreationDesc(Long id);
 
-    public List<Annonce> findByPosteParId(Long id);
+    public List<Annonce> findByPosteParIdOrderByDateCreationDesc(Long id);
     
-    public List<Annonce> findByPosteParLieuId(Long id);
+    public List<Annonce> findByPosteParLieuIdOrderByDateCreationDesc(Long id);
     
-    public List<Annonce> findByTypeAnnonce(TypeAnnonce typeAnnonce);
+    public List<Annonce> findByTypeAnnonceOrderByDateCreationDesc(TypeAnnonce typeAnnonce);
     
-    public List<Annonce> findByTitreContaining(String str);
+    public List<Annonce> findByTitreContainingIgnoreCaseOrderByDateCreationDesc(String str);
     
     //public List<Annonce> findByTitreLike(String str);
     
+    public List<Annonce> findByTypeAnnonceAndPosteParIdOrderByDateCreationDesc(TypeAnnonce typeAnnonce, Long id);
+    
+    public List<Annonce> findByTypeAnnonceAndPosteParLieuIdOrderByDateCreationDesc(TypeAnnonce typeAnnonce, Long id);
+    
+    public List<Annonce> findByTypeAnnonceAndCategorieIdOrderByDateCreationDesc(TypeAnnonce typeAnnonce, Long id);
+    
+    public List<Annonce> findByTypeAnnonceAndPosteParLieuIdAndCategorieIdOrderByDateCreationDesc(TypeAnnonce typeAnnonce, Long idLieu,Long idCategorie);
+
+    public List<Annonce> findByTitreOrContenuContainingOrderByDateCreationDesc(String rechercheTitre, String rechercheContenu);
    
 
 }
