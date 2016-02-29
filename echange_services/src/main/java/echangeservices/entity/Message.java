@@ -21,6 +21,16 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Message implements Serializable {
 
+    public Message(Long id, String titre, String contenu, Timestamp dateCreation, Boolean lu, Utilisateur destinataire, Utilisateur emetteur) {
+        this.id = id;
+        this.titre = titre;
+        this.contenu = contenu;
+        this.dateCreation = dateCreation;
+        this.lu = lu;
+        this.destinataire = destinataire;
+        this.emetteur = emetteur;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

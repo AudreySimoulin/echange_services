@@ -21,6 +21,14 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Paiement implements Serializable {
 
+    public Paiement(Long id, Integer montant, Timestamp dateCreation, Utilisateur destinataire, Utilisateur emetteur) {
+        this.id = id;
+        this.montant = montant;
+        this.dateCreation = dateCreation;
+        this.destinataire = destinataire;
+        this.emetteur = emetteur;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
