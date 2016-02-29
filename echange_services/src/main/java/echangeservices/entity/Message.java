@@ -106,7 +106,7 @@ public class Message implements Serializable {
     public Message() {
     }
 
-    public Message(String titre, String contenu, Timestamp dateCreation, Boolean lu, Utilisateur destinataire, Utilisateur emetteur) {
+    public Message(String titre, String contenu, Date dateCreation, Boolean lu, Utilisateur destinataire, Utilisateur emetteur) {
 
         this.titre = titre;
         this.contenu = contenu;

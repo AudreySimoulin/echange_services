@@ -5,9 +5,11 @@
  */
 package echangeservices.test;
 
+import echangeservices.entity.Annonce;
 import echangeservices.entity.Categorie;
 import echangeservices.entity.Lieu;
 import echangeservices.entity.Utilisateur;
+import echangeservices.enumeration.TypeAnnonce;
 import echangeservices.enumeration.TypeUtil;
 import echangeservices.service.AnnonceService;
 import echangeservices.service.CategorieService;
@@ -22,6 +24,7 @@ import echangeservices.service.UtilisateurService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import echangeservices.spring.SpringConfig;
+import java.util.Date;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -70,7 +73,7 @@ public class SpringTest {
     @Autowired
     private TransfertService transfertService;
 
-   // @Before
+    //@Before
     public void before() {
         dBService.deleteAll();
 
@@ -114,11 +117,11 @@ public class SpringTest {
             categorieService.save(c);
         }
         {
-            Categorie c = new Categorie(4L, "Dépannage");
+            Categorie c = new Categorie(5L, "Dépannage");
             categorieService.save(c);
         }
         {
-            Categorie c = new Categorie(5L, "Services à la personne");
+            Categorie c = new Categorie(6L, "Services à la personne");
             categorieService.save(c);
         }
 
@@ -138,6 +141,39 @@ public class SpringTest {
             Utilisateur u = new Utilisateur(4L, "romain", "coucou", TypeUtil.Administrateur, 100, lieuService.findOne(4L));
             utilisateurService.save(u);
         }
+        
+        //Ajout d'annonces
+        
+        {
+            Annonce a = new Annonce(1L, TypeAnnonce.Demande, "Recherche electricien", "blabla", 20, new Date(), categorieService.findOne(1L), utilisateurService.findOne(1L));
+            annonceService.save(a);
+            categorieService.findOne(1L).getAnnonces().add(a);
+            utilisateurService.findOne(1L).getAnnonces().add(a);
+        }
+        {
+            Annonce a = new Annonce(2L, TypeAnnonce.Demande, "Recherche cours", "blabla", 20, new Date(), categorieService.findOne(3L), utilisateurService.findOne(2L));
+            annonceService.save(a);
+            categorieService.findOne(3L).getAnnonces().add(a);
+            utilisateurService.findOne(2L).getAnnonces().add(a);
+        }
+        {
+            Annonce a = new Annonce(3L, TypeAnnonce.Offre, "Donne cours", "blabla", 20, new Date(), categorieService.findOne(3L), utilisateurService.findOne(3L));
+            annonceService.save(a);
+            categorieService.findOne(3L).getAnnonces().add(a);
+            utilisateurService.findOne(3L).getAnnonces().add(a);
+        }
+        {
+            Annonce a = new Annonce(4L, TypeAnnonce.Offre, "Propose ménage", "blabla", 30, new Date(), categorieService.findOne(6L), utilisateurService.findOne(1L));
+            annonceService.save(a);
+            categorieService.findOne(5L).getAnnonces().add(a);
+            utilisateurService.findOne(1L).getAnnonces().add(a);
+        }
+        {
+            Annonce a = new Annonce(5L, TypeAnnonce.Demande, "Recherche dépannage informatique", "blabla", 50, new Date(), categorieService.findOne(4L), utilisateurService.findOne(4L));
+            annonceService.save(a);
+            categorieService.findOne(5L).getAnnonces().add(a);
+            utilisateurService.findOne(1L).getAnnonces().add(a);
+        }
 
     }
 
@@ -147,9 +183,50 @@ public class SpringTest {
         envoieMessageService.envoieMessage(1L, 2L, "Hello", "Bonjour Audrey");
     }
     
-    @Test
+    //@Test
     public void transfertOK(){
         transfertService.transfert(1L, 3L, 50, "Transfert effectue");
     }
 
+    //@Test
+    public void findByCategorieOK(){
+        for(Annonce a : annonceService.findByCategorieId(1L))
+            System.out.println(a.getTitre());
+    }
+
+    //@Test
+    public void findByUtilisateurOK(){
+        for(Annonce a : annonceService.findByPosteParId(1L))
+            System.out.println(a.getTitre());
+    }
+    
+//    @Test
+    public void findByTitreOK(){
+       // for(Annonce a : annonceService.findByTitre("Recherche electricien"))
+       //     System.out.println("******"+a.getTitre()+"**********");
+    }
+    
+    //@Test
+    public void findByLieuOK(){
+        for(Annonce a : annonceService.findByPosteParLieuId(2L))
+            System.out.println("******"+a.getTitre()+"**********"); 
+    }
+    
+   // @Test
+    public void findByTypeAnnonceOK(){
+        for(Annonce a : annonceService.findByTypeAnnonce(TypeAnnonce.Demande))
+            System.out.println("******"+a.getTitre()+"**********"); 
+    }
+    
+    //@Test
+    public void findByTitreContainingOK(){
+        for(Annonce a : annonceService.findByTitreContaining("el%ec"))
+            System.out.println("******"+a.getTitre()+"**********"); 
+    }
+    
+    //@Test
+    public void findByTitreLikeOK(){
+        for(Annonce a : annonceService.findByTitreLike("%elec%"))
+            System.out.println("******"+a.getTitre()+"**********"); 
+    }
 }

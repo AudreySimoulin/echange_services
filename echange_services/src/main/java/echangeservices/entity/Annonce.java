@@ -132,7 +132,20 @@ public class Annonce implements Serializable {
     public Annonce() {
     }
 
-    public Annonce(Long id, TypeAnnonce typeAnnonce, String titre, String contenu, Integer prix, Timestamp dateCreation, Categorie categorie, Utilisateur postePar, List<Commentaire> commentaires) {
+    public Annonce(Long id, TypeAnnonce typeAnnonce, String titre, String contenu, Integer prix, Date dateCreation, Categorie categorie, Utilisateur postePar) {
+        this.id = id;
+        this.typeAnnonce = typeAnnonce;
+        this.titre = titre;
+        this.contenu = contenu;
+        this.prix = prix;
+        this.dateCreation = dateCreation;
+        this.categorie = categorie;
+        this.postePar = postePar;
+    }
+    
+    
+
+    public Annonce(Long id, TypeAnnonce typeAnnonce, String titre, String contenu, Integer prix, Date dateCreation, Categorie categorie, Utilisateur postePar, List<Commentaire> commentaires) {
         this.id = id;
         this.typeAnnonce = typeAnnonce;
         this.titre = titre;

@@ -95,7 +95,7 @@ public class Paiement implements Serializable {
     public Paiement() {
     }
 
-    public Paiement(Integer montant, Timestamp dateCreation, Utilisateur destinataire, Utilisateur emetteur, String commentaire) {
+    public Paiement(Integer montant, Date dateCreation, Utilisateur destinataire, Utilisateur emetteur, String commentaire) {
         this.montant = montant;
         this.dateCreation = dateCreation;
         this.destinataire = destinataire;
