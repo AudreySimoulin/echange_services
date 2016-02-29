@@ -54,6 +54,28 @@ public class Utilisateur implements Serializable {
     @OneToMany(mappedBy = "emetteur")
     private List<Message> envoyes;
 
+    @OneToMany(mappedBy = "destinataire")
+    private List<Paiement> paiementsRecus;
+
+    @OneToMany(mappedBy = "emetteur")
+    private List<Paiement> paiementsEmis;
+
+    public List<Paiement> getPaiementsRecus() {
+        return paiementsRecus;
+    }
+
+    public void setPaiementsRecus(List<Paiement> paiementsRecus) {
+        this.paiementsRecus = paiementsRecus;
+    }
+
+    public List<Paiement> getPaiementsEmis() {
+        return paiementsEmis;
+    }
+
+    public void setPaiementsEmis(List<Paiement> paiementsEmis) {
+        this.paiementsEmis = paiementsEmis;
+    }
+
     public List<Message> getRecus() {
         return recus;
     }

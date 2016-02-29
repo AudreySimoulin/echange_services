@@ -11,6 +11,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  *
@@ -23,10 +25,34 @@ public class Paiement implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
-    private Integer montant ;
-    
+
+    private Integer montant;
+
     private Timestamp dateCreation;
+
+    @ManyToOne
+    @JoinColumn(name = "Dest_ID")
+    private Utilisateur destinataire;
+
+    @ManyToOne
+    @JoinColumn(name = "Emet_ID")
+    private Utilisateur emetteur;
+
+    public Utilisateur getEmetteur() {
+        return emetteur;
+    }
+
+    public void setEmetteur(Utilisateur emetteur) {
+        this.emetteur = emetteur;
+    }
+
+    public Utilisateur getDestinataire() {
+        return destinataire;
+    }
+
+    public void setDestinataire(Utilisateur destinataire) {
+        this.destinataire = destinataire;
+    }
 
     public Integer getMontant() {
         return montant;
@@ -76,5 +102,5 @@ public class Paiement implements Serializable {
     public String toString() {
         return "echangeservices.entity.Paiement[ id=" + id + " ]";
     }
-    
+
 }
