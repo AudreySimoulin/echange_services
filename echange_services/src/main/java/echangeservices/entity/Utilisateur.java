@@ -52,10 +52,10 @@ public class Utilisateur implements Serializable {
     private Lieu lieu;
 
     @OneToMany(mappedBy = "destinataire")
-    private List<Message> recus;
+    private List<Message> messagesRecus;
 
     @OneToMany(mappedBy = "emetteur")
-    private List<Message> envoyes;
+    private List<Message> messagesEnvoyes;
 
     @OneToMany(mappedBy = "destinataire")
     private List<Paiement> paiementsRecus;
@@ -79,20 +79,20 @@ public class Utilisateur implements Serializable {
         this.paiementsEmis = paiementsEmis;
     }
 
-    public List<Message> getRecus() {
-        return recus;
+    public List<Message> getMessagesRecus() {
+        return messagesRecus;
     }
 
-    public void setRecus(List<Message> recus) {
-        this.recus = recus;
+    public void setMessagesRecus(List<Message> messagesRecus) {
+        this.messagesRecus = messagesRecus;
     }
 
-    public List<Message> getEnvoyes() {
-        return envoyes;
+    public List<Message> getMessagesEnvoyes() {
+        return messagesEnvoyes;
     }
 
-    public void setEnvoyes(List<Message> envoyes) {
-        this.envoyes = envoyes;
+    public void setMessagesEnvoyes(List<Message> messagesEnvoyes) {
+        this.messagesEnvoyes = messagesEnvoyes;
     }
 
     public Lieu getLieu() {
@@ -159,19 +159,19 @@ public class Utilisateur implements Serializable {
         this.id = id;
     }
 
+    public Utilisateur() {
+    }
+    
+    
+
     public Utilisateur(Long id, String email, String mdp, TypeUtil typeUtil, Integer solde, List<Annonce> annonces, List<Commentaire> commentaires, Lieu lieu, List<Message> recus, List<Message> envoyes, List<Paiement> paiementsRecus, List<Paiement> paiementsEmis) {
         this.id = id;
         this.email = email;
         this.mdp = mdp;
         this.typeUtil = typeUtil;
-        this.solde = solde;
-        this.annonces = annonces;
-        this.commentaires = commentaires;
+        this.solde = solde;       
         this.lieu = lieu;
-        this.recus = recus;
-        this.envoyes = envoyes;
-        this.paiementsRecus = paiementsRecus;
-        this.paiementsEmis = paiementsEmis;
+        
     }
 
     @Override

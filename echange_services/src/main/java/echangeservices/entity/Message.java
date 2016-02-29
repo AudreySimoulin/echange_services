@@ -98,8 +98,13 @@ public class Message implements Serializable {
         this.id = id;
     }
 
-    public Message(Long id, String titre, String contenu, Timestamp dateCreation, Boolean lu, Utilisateur destinataire, Utilisateur emetteur) {
-        this.id = id;
+    public Message() {
+    }
+    
+    
+
+    public Message( String titre, String contenu, Timestamp dateCreation, Boolean lu, Utilisateur destinataire, Utilisateur emetteur) {
+        
         this.titre = titre;
         this.contenu = contenu;
         this.dateCreation = dateCreation;

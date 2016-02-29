@@ -6,7 +6,7 @@
 package echangeservices.service;
 
 import echangeservices.entity.Message;
-import java.io.Serializable;
+import echangeservices.entity.Utilisateur;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -14,5 +14,6 @@ import org.springframework.data.repository.CrudRepository;
  * @author admin
  */
 public interface MessageService extends CrudRepository<Message, Long>{
-    
+  
+      
 }

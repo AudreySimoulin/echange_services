@@ -56,6 +56,11 @@ public class Categorie implements Serializable {
         this.id = id;
     }
 
+    public Categorie() {
+    }
+    
+    
+
     public Categorie(Long id, String nom, List<Annonce> annonces) {
         this.id = id;
         this.nom = nom;

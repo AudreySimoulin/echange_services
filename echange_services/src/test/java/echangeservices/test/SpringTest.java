@@ -6,7 +6,10 @@
 package echangeservices.test;
 
 import echangeservices.entity.Categorie;
+import echangeservices.entity.Utilisateur;
+import echangeservices.enumeration.TypeUtil;
 import echangeservices.service.CategorieService;
+import echangeservices.service.EnvoieMessageService;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import echangeservices.spring.SpringConfig;
@@ -30,8 +33,14 @@ public class SpringTest {
     
 
     
+    @Autowired
+    private EnvoieMessageService envoieMessage;
+    
     @Test
-    public void doNadaOK(){
+    public void doNadaOK(){       
+     
+        
+      
 
     }
     
