@@ -7,12 +7,15 @@ package echangeservices.entity;
 
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -28,7 +31,9 @@ public class Commentaire implements Serializable {
 
     private String contenu;
     private Integer note;
-    private Timestamp dateCreation;
+
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreation;
 
     @ManyToOne
     @JoinColumn(name = "Annonce_ID")
@@ -70,11 +75,11 @@ public class Commentaire implements Serializable {
         this.note = note;
     }
 
-    public Timestamp getDateCreation() {
+    public Date getDateCreation() {
         return dateCreation;
     }
 
-    public void setDateCreation(Timestamp dateCreation) {
+    public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
     }
 

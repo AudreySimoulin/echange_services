@@ -8,6 +8,7 @@ package echangeservices.entity;
 import echangeservices.enumeration.TypeAnnonce;
 import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Date;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -18,6 +19,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 /**
  *
@@ -40,7 +43,8 @@ public class Annonce implements Serializable {
 
     private Integer prix;
 
-    private Timestamp dateCreation;
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date dateCreation;
 
     @ManyToOne
     @JoinColumn(name = "Categorie_ID")
@@ -109,11 +113,11 @@ public class Annonce implements Serializable {
         this.prix = prix;
     }
 
-    public Timestamp getDateCreation() {
+    public Date getDateCreation() {
         return dateCreation;
     }
 
-    public void setDateCreation(Timestamp dateCreation) {
+    public void setDateCreation(Date dateCreation) {
         this.dateCreation = dateCreation;
     }
 
