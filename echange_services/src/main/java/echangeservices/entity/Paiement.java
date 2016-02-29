@@ -30,6 +30,8 @@ public class Paiement implements Serializable {
 
     private Timestamp dateCreation;
 
+    private String commentaire;
+
     @ManyToOne
     @JoinColumn(name = "Dest_ID")
     private Utilisateur destinataire;
@@ -37,6 +39,14 @@ public class Paiement implements Serializable {
     @ManyToOne
     @JoinColumn(name = "Emet_ID")
     private Utilisateur emetteur;
+
+    public String getCommentaire() {
+        return commentaire;
+    }
+
+    public void setCommentaire(String commentaire) {
+        this.commentaire = commentaire;
+    }
 
     public Utilisateur getEmetteur() {
         return emetteur;
@@ -78,12 +88,13 @@ public class Paiement implements Serializable {
         this.id = id;
     }
 
-    public Paiement(Long id, Integer montant, Timestamp dateCreation, Utilisateur destinataire, Utilisateur emetteur) {
+    public Paiement(Long id, Integer montant, Timestamp dateCreation, Utilisateur destinataire, Utilisateur emetteur, String commentaire) {
         this.id = id;
         this.montant = montant;
         this.dateCreation = dateCreation;
         this.destinataire = destinataire;
         this.emetteur = emetteur;
+        this.commentaire = commentaire;
     }
 
     @Override
